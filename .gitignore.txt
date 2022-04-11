@@ -1,0 +1,7 @@
+.ipynb_checkpoints
+.RData
+.Rhistory
+Data Science Playbook.Rmd
+Data-Science-Playbook.html
+Jupyter Notebook
+tidymodels
