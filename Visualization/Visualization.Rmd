@@ -1,0 +1,136 @@
+---
+title: "Visualization"
+author: "Chris DeAngelis, CFA"
+date: "12/31/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Load any required packages
+library(tidyverse)
+```
+
+## Building Tables
+
+R's kableExtra package is my preferred way of building out professional, formatted table visuals. They can be viewed in R studio and saved to image files (.jpg, pnf...), PDFs (after loading other packages), and even Powerpoints (after loading other packages). While not a requirement, the magrittr package simplifies the coding immensely. Magrittr is a broader programming technique often called "piping" or "chaining". Magrittr advantages:
+- Reduces the required lines of code by essentially passing a data frame from one step to another - as opposed to saving down objects for each data transformation
+- Easier to read code and follow intended action
+- Stores less objects in memory resulting in smaller file sizes and a cleaner R environment of objects
+
+Specific to the kableExtra package, tables are built step by step similar to plotting in base R. You start with a data frame (or matrix?) and layer in formatting steps. A common workflow resembles:
+1. Which dataframe are you passing?
+2. Do you want a title/subtitle/caption?
+3. Do you want to format any specific rows (alternating rows?) or columns?
+4. Do you want to add any footnotes? Borders?
+5. Do you want to save or export the table?
+
+# Kable Tables
+```{r kable}
+library(kableExtra)
+library(magrittr) # Piping is the most effective way to simplify table build out and formatting
+
+df <- mtcars
+
+# Build a pretty table and save it to a .PNG image (or PDF, HTML, etc)
+df %>%
+  kbl(caption = "Table Title") %>%
+  kable_classic(full_width = F, html_font = "Cambria") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = T, font_size = 7) %>%
+  add_header_above(c("Measurements" = 4L, " " = 1L)) %>% 
+  kable_paper() %>%
+  save_kable(file="tablename.png")
+
+```
+
+# Flextables
+```{r flextable}
+# https://rdrr.io/cran/flextable/f/README.md
+# https://ardata-fr.github.io/flextable-gallery/gallery/
+# https://davidgohel.github.io/flextable/reference/index.html
+library(flextable)
+library(magrittr) # Piping is the most effective way to simplify table build out and formatting
+
+df <- mtcars
+
+# Build a pretty table and save it to a .PNG image (or PDF, HTML, etc)
+df %>%
+  
+
+```
+
+## ggplot2
+
+ggplot2 is my preferred visualization package in R and is included as part of the Tidyverse package written by Hadley Wickham. The biggest alternative to ggplot2 is plotting in Base R which is included in every instance of R. The biggest difference between base plots and ggplot2 is the methodology. ggplot executes code and designs the chart all at once. Base plotting incrementally adds each feature to a chart. While both approaches have their advantages and disadvantages, here is my opinion on when each should be used:
+
+ggplot2
+- Most capabilities in the least amount of code. Several add on capabilities are available
+- 
+
+base R plots
+- Great for exploratory analysis and building charts out step by step on the fly
+- Most lean, secure. No need to install several add on packages for added capabilities
+
+There are alternatives outside of ggplot2 and base R but I consider them specialized. Some of my favorites are:
+- plotly (interactive plots)
+- gganimate (animated plots)
+- rgl (3D plots)
+- shiny (interactive dashboards)
+
+```{r ggplot2}
+data <- mtcars
+ggplot(mtcars, aes(x = mpg, y = wt)) + # Assign variables, groups, colors, etc
+  geom_point() +                       # Add points vs. bars, lines, etc.
+  geom_smooth() +                      # Add a line of best fit
+  facet_wrap(. ~ cyl) +                # Build
+  ggtitle("That's how you chart!") +   # Add a title, caption, footnote, or format axis labels
+  theme_minimal()                      # Add popular, predefined themes or create your own!
+```
+
+## R Base Plot
+```{r plot}
+# Demonstrating how simple plotting can be
+plot(pressure)
+
+# Demonstrating iterative nature of building plots - try one step at a time!
+plot(x <- sort(rnorm(47)), type = "s", main = "plot(x, type = \"s\")")
+points(x, cex = .5, col = "dark red")
+```
+
+## 3D Plots
+```{r 3d_plots}
+library(rgl)
+
+#Build 3D charts
+data <- mtcars
+
+# Plot
+plot3d( 
+    x=scale(data$mpg), y=scale(data$wt), z=scale(data$cyl), 
+    col = c("blue","green","red"), 
+    type = 'p', 
+    radius = .8,
+    xlab="MPG", ylab="Weight", zlab="Cylinders")
+```
+
+## Animated Plots
+```{r animated_plots}
+library(gganimate)
+```
+
+## Interactive Plots
+```{r interactive_plots}
+library(plotly)
+```
+
+## Interactive Dashboards
+```{r interactive_dashboards}
+library(shiny)
+```
+
+## Writing to Word Documents
+```{r interactive_dashboards}
+#https://ardata-fr.github.io/officeverse/officer-for-word.html#how-to-manage-sections
+library(officer)
+```

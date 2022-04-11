@@ -1,0 +1,108 @@
+---
+title: "Data Science Playbook"
+author: "Chris DeAngelis, CFA"
+date: "3/31/2022"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_collapsed: true
+    toc_depth: 6
+    #number_sections: true
+    theme: darkly #lumen #darkly #spacetheme
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#https://www.diagrams.net/blog/mermaid-diagrams
+```
+
+    A task          :a1, 2022-03-07, 7d
+    Another task    :after a1 , 5d
+
+### Introduction / Data Science at Elkay
+  ```
+  Data Science supports business decisions for strategic advantage by extracting insights on market opportunities, growth, and cost savings from systems and data
+  ```
+
+This document discusses Elkay's Data Science Playbook for identifying, approaching & solving business challenges. While not exhaustive, the Playbook provides structure around how Data Science is used and offers a repeatable guide to problem solving. It is intended to be a living document that improves over time as resources grow. Along with this Playbook is an extensive library of reusable Python and R code that is leveraged across projects and updated with new capabilities.
+
+#### Identifying Opportunities
+
+Data Science can add value across the organization but prioritizes projects based on enterprise value and project feasibility. Oracle (OAC) is Elkay's book of record and is the best resource for quantifying the potential value-add to the enterprise.  
+
+#### Project Overviews
+##### Marketing Funnel
+
+### Exploratory Analysis (EDA)
+#### Understand Business Objectives
+Before looking at the data, it is critical the Data Science team have a deep understanding of:
+
+1. Business problem, need, or opportunity
+2. Elkay's current process & resources
+3. The project objective and desired output
+4. Potential actions or recommendations as a result of the analysis
+
+Lack of clarity in any of these items oftentimes leads to poor adoption of Data Science results.
+
+#### Data Minimization
+
+Excessive data limits the capabilities of Data Science. Additionally, a common shortcoming of machine learning is how easy it is to overfit models. This leads to model inaccuracies. As such, one of the critical strategies of Exploratory Analysis is to identify relevant data and **minimize** the amount of data and number of data sources.
+
+#### Outlier Handling
+
+Outliers can have a material impact on modeling and analysis and require a project by project assessment of how they are handled. A few common approaches are:
+
+1. Remove outliers. This is often discouraged as these are recorded results that could conceivably happen again. If we do not expect the outliers to occur in the future we can justify removing them.
+2. Imputation: replace outliers (or missing data) with more reasonable results (population mean, median, etc.). This will make the dataset's distribution easier to understand but may not be appropriate if outliers are possible in the future.
+3. Work with outliers: be aware of which datapoints have outliers and why those outliers have occurred. Understanding this will increase our ability to model.
+
+#### Scaling/Normalization
+
+#### Data Preparation
+#### Proper Field Names, NA removal
+#### Feature Engineering
+#### Dimensionality Reduction
+##### t-SNE
+##### PCA
+
+#### Metric & Error Measurement Generation
+##### Error Identification & Optimization
+
+### Model Development
+#### Seed & Randomize Dataset
+#### Test/Train Split
+#### Model Selection
+##### Regression
+###### Linear Regression
+##### Classification
+#### Hypertuning
+#### ANOVA Review
+#### Cross Validations
+
+### Visualization {.tabset .tabset-fade .tabset-pills}
+#### Static {.tabset .tabset-fade .tabset-pills}
+##### Distribution {.tabset .tabset-fade .tabset-pills}
+##### Correlation {.tabset .tabset-fade .tabset-pills}
+##### Evolution {.tabset .tabset-fade .tabset-pills}
+##### Spatial {.tabset .tabset-fade .tabset-pills}
+##### Part of a Whole {.tabset .tabset-fade .tabset-pills}
+##### Ranking {.tabset .tabset-fade .tabset-pills}
+##### Flow {.tabset .tabset-fade .tabset-pills}
+ 
+#### Interactive {.tabset .tabset-fade .tabset-pills}
+##### Shiny {.tabset .tabset-fade .tabset-pills}
+#### 3D {.tabset .tabset-fade .tabset-pills}
+#### Animation {.tabset .tabset-fade .tabset-pills}
+##### ggAnimate 
+
+### Monitor & Model Performance Review {.tabset .tabset-fade .tabset-pills}
+#### AUC
+#### MAE
+#### R^2
+#### Pseudo R^2
+
+### Documentation
+#### Jupyter Notebook
+#### RMarkdown
+#### Cheatsheets
